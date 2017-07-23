@@ -1,0 +1,6 @@
+Welcome.
+
+Setup:
+
+
+npm install: 
