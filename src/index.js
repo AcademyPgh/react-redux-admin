@@ -14,8 +14,9 @@ import '../node_modules/toastr/build/toastr.min.css';
 const store = configureStore();
 
 render(
-  <Provider store={store}> 
-     <Router history={browserHistory} routes={routes}/>,
-    document.getElementById('app')
-  </Provider>
+  <Provider store={store}>
+     <Router history={browserHistory} routes={routes}/>
+  </Provider>,
+  document.getElementById('app')
+
 );
