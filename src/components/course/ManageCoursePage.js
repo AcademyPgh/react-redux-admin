@@ -2,23 +2,23 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as courseActions from '../../actions/courseActions';
-// import CourseForm from './CourseForm';
+import CourseForm from './CourseForm';
 // import {authorsFormattedForDropdown} from '../../selectors/selectors';
 import toastr from 'toastr';
 
 export class ManageCoursePage extends React.Component {
-  // constructor(props, context) {
-  //   super(props, context);
-  //
-  //   this.state = {
-  //     course: Object.assign({}, this.props.course),
-  //     errors: {},
-  //     saving: false
-  //   };
-  //
-  //   this.saveCourse = this.saveCourse.bind(this);
-  //   this.updateCourseState = this.updateCourseState.bind(this);
-  // }
+  constructor(props, context) {
+    super(props, context);
+
+    this.state = {
+      course: Object.assign({}, this.props.course),
+      errors: {}
+      // saving: false
+    };
+
+    // this.saveCourse = this.saveCourse.bind(this);
+    // this.updateCourseState = this.updateCourseState.bind(this);
+  }
 
   // componentWillReceiveProps(nextProps) {
   //   if (this.props.course.id != nextProps.course.id) {
@@ -71,15 +71,18 @@ export class ManageCoursePage extends React.Component {
 
   render() {
     return (
-      // <CourseForm
-      //   course={this.state.course}
-      //   onChange={this.updateCourseState}
-      //   onSave={this.saveCourse}
-      //   errors={this.state.errors}
-      //   allAuthors={this.props.authors}
-      //   saving={this.state.saving}
-      // />
-      <h1>Manage Course</h1>
+      <div>
+        <CourseForm
+          allAuthors = {[]}
+          course={this.state.course}
+          onChange={this.updateCourseState}
+          onSave={this.saveCourse}
+          errors={this.state.errors}
+          // allAuthors={this.props.authors}
+          // saving={this.state.saving}
+        />
+      </div>
+
     );
   }
 }
@@ -103,19 +106,17 @@ ManageCoursePage.propTypes = {
 
 function mapStateToProps(state, ownProps) {
   // const courseId = ownProps.params.id; // from the path `/course/:id`
-  //
-  // let course = {id: '', watchHref: '', title: '', authorId: '', length: '', category: ''};
-  //
+
+  let course = {id: '', watchHref: '', title: '', authorId: '', length: '', category: ''};
+
   // if (courseId && state.courses.length > 0) {
   //   course = getCourseById(state.courses, courseId);
   // }
-  //
-  // return {
-  //   course: course,
-  //   authors: authorsFormattedForDropdown(state.authors)
-  // };
 
-  return {state: state}
+  return {
+    course: course
+    // authors: authorsFormattedForDropdown(state.authors)
+  };
 }
 
 function mapDispatchToProps(dispatch) {
