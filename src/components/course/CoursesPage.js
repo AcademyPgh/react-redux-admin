@@ -58,7 +58,6 @@ class CoursesPage extends React.Component {
 }
 
 CoursesPage.propTypes = {
-  // courses: PropTypes.array.isRequired,
   courses: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 };

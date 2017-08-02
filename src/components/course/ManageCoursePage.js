@@ -62,6 +62,8 @@ export class ManageCoursePage extends React.Component {
       //   toastr.error(error);
       //   this.setState({saving: false});
       // });
+    ;  this.context.router.push('/courses');
+
   }
   //
   // redirect() {
@@ -95,10 +97,10 @@ ManageCoursePage.propTypes = {
 };
 
 //Pull in the React Router context so router is available on this.context.router.
-// ManageCoursePage.contextTypes = {
-//   router: PropTypes.object
-// };
-//
+ManageCoursePage.contextTypes = {
+  router: PropTypes.object
+};
+
 // function getCourseById(courses, id) {
 //   const course = courses.filter(course => course.id == id);
 //   if (course) return course[0]; //since filter returns an array, have to grab the first.
