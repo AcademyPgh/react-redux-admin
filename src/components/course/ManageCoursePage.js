@@ -12,11 +12,11 @@ export class ManageCoursePage extends React.Component {
 
     this.state = {
       course: Object.assign({}, this.props.course),
-      errors: {}
-      // saving: false
+      errors: {},
+      saving: false
     };
 
-    // this.saveCourse = this.saveCourse.bind(this);
+    this.saveCourse = this.saveCourse.bind(this);
     this.updateCourseState = this.updateCourseState.bind(this);
   }
 
@@ -47,22 +47,22 @@ export class ManageCoursePage extends React.Component {
   //   this.setState({errors: errors});
   //   return formIsValid;
   // }
-  //
-  // saveCourse(event) {
-  //   event.preventDefault();
-  //
-  //   if (!this.courseFormIsValid()) {
-  //     return;
-  //   }
-  //
-  //   this.setState({saving: true});
-  //   this.props.actions.saveCourse(this.state.course)
-  //     .then(() => this.redirect())
-  //     .catch(error => {
-  //       toastr.error(error);
-  //       this.setState({saving: false});
-  //     });
-  // }
+
+  saveCourse(event) {
+    event.preventDefault();
+
+    // if (!this.courseFormIsValid()) {
+    //   return;
+    // }
+
+    this.setState({saving: true});
+    this.props.actions.saveCourse(this.state.course)
+      // .then(() => this.redirect())
+      // .catch(error => {
+      //   toastr.error(error);
+      //   this.setState({saving: false});
+      // });
+  }
   //
   // redirect() {
   //   this.setState({saving: false});
