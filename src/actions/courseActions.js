@@ -7,7 +7,7 @@ export function createCourseSuccess(course) {
 }
 
 export function updateCourseSuccess(course) {
-  return { type: types.UPDATE_COURSE_SUCCESS, course }; // omitted value 'course: course'. In ES6, you only need the key
+  return { type: types.UPDATE_COURSE_SUCCESS, course };
 }
 
 export function loadCoursesSuccess(courses) {

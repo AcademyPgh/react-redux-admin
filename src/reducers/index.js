@@ -7,7 +7,8 @@ const rootReducer = combineReducers({
   // courses: courses
   // investivate shorthand property name
   authors,
-  courses
+  courses,
+  ajaxCallsInProgress
 });
 
 export default rootReducer;
