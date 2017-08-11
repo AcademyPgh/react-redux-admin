@@ -1,6 +1,6 @@
 import * as types from './actionTypes';
 import courseApi from '../api/mockCourseApi';
-import {beginAjaxCall} from './ajaxStatusActions';
+import {beginAjaxCall, ajaxCallError} from './ajaxStatusActions';
 
 export function createCourseSuccess(course) {
   return { type: types.CREATE_COURSE_SUCCESS, course }; // omitted value 'course: course'. In ES6, you only need the key
@@ -34,6 +34,7 @@ export function saveCourse(course){
       course.id ? dispatch(updateCourseSuccess(savedCourse)) :
       dispatch(createCourseSuccess(savedCourse));
     }).catch(error => {
+      dispatch(ajaxCallError(error));
       throw(error);
     });
   };
