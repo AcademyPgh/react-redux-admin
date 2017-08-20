@@ -2,7 +2,7 @@ import webpack from 'webpack';
 import path from 'path';
 
 const GLOBALS = {
-  'process.env.NODE_ENV': JSON.stringify('production');
+  'process.env.NODE_ENV': JSON.stringify('production')
 };
 export default {
   debug: true,
