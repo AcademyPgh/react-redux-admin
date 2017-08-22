@@ -4,7 +4,7 @@
 4. unsaved changes method (managecourseform)
 5. client-side validation (category and link data)
 show 404s
-show numbres of courses in Header
+show numbers of courses in Header
 add pagination or infinite scrolling
 sort courses table
 revert abandoned changes
