@@ -32,9 +32,9 @@ class CoursesPage extends React.Component {
 
   }
 
-  courseRow(course, index) {
-    return (<div key={index}>{course.title}</div>);
-  }
+    // courseRow(course, index) {
+    //   return (<div key={index}>{course.title}</div>);
+    // }
 
   redirectToAddCoursePage() {
     browserHistory.push('/course');
@@ -42,6 +42,8 @@ class CoursesPage extends React.Component {
 
   render() {
     const {courses} = this.props;
+    console.log("courses's Page")
+    console.log(courses)
 
     return (
       <div>

@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react';
+import AuthorListRow from './AuthorListRow';
 
 class AuthorList extends React.Component {
   render () {
@@ -13,7 +14,10 @@ class AuthorList extends React.Component {
           </tr>
           </thead>
           <tbody>
+            {this.props.authors.map(author =>
+              <AuthorListRow key={author.id} author={author}/>
 
+          )}
           </tbody>
         </table>
     );
