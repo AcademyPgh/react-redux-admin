@@ -5,6 +5,7 @@ import * as authorActions from '../../actions/authorActions';
 import {browserHistory} from 'react-router';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import toastr from 'toastr';
 
 
 class AuthorsPage extends React.Component {
@@ -15,15 +16,21 @@ class AuthorsPage extends React.Component {
     };
 
     this.redirectToAddAuthorPage = this.redirectToAddAuthorPage.bind(this);
+    this.deleteAuthor = this.deleteAuthor.bind(this);
   }
 
   redirectToAddAuthorPage() {
     browserHistory.push('/author');
   }
 
-  deleteAuthor(author) {
-    return null;
-    // TODO
+  deleteAuthor(id, event) {
+    event.preventDefault();
+    // console.log(event)
+    // console.log(id)
+    this.props.actions.deleteAuthor(id).catch(error => {
+      toastr.error(error);
+    });
+    toastr.warning(`${id} deleted`);
   }
 
   render() {
@@ -35,6 +42,7 @@ class AuthorsPage extends React.Component {
         <input
           type="submit"
           value="Add Author"
+          deleteAuthor={this.deleteAuthor}
           onClick={this.redirectToAddAuthorPage}
         />
         <AuthorList
@@ -55,6 +63,8 @@ function mapStateToProps(state, ownProps) {
   return ({
     authors: state.authors
   });
+  //each property on the object you define will
+  //become a property on container Component
 }
 
 function mapDispatchtoProps(dispatch) {

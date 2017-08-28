@@ -7,15 +7,15 @@ class AuthorList extends React.Component {
         <table className="table">
           <thead>
           <tr>
-            <th>&nbsp;</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>ID</th>
+            <th>&nbsp;</th>
           </tr>
           </thead>
           <tbody>
             {this.props.authors.map(author =>
-              <AuthorListRow key={author.id} author={author}/>
+              <AuthorListRow key={author.id} author={author} deleteAuthor={this.props.deleteAuthor}/>
 
           )}
           </tbody>
@@ -25,7 +25,8 @@ class AuthorList extends React.Component {
 }
 
 AuthorList.propTypes = {
- authors: PropTypes.array.isRequired
+ authors: PropTypes.array.isRequired,
+ deleteAuthor: PropTypes.func.isRequired
 };
 
 export default AuthorList;
