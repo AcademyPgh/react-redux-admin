@@ -1,0 +1,10 @@
+1. Author Admin
+2. Delete course
+3. Hide empty course list
+4. unsaved changes method (managecourseform)
+5. client-side validation (category and link data)
+show 404s
+show numbers of courses in Header
+add pagination or infinite scrolling
+sort courses table
+revert abandoned changes

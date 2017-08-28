@@ -5,10 +5,10 @@ import initialState from './initialState';
 
 export default function authorReducer(state = [], action) {
   switch (action.type) {
-    // case types.AUTHORS_COURSE:
-    //   return [...state,
-    //     Object.assign({}, action.course)
-    //   ];
+    case types.DELETE_AUTHOR_SUCCESS:
+      return [...state.filter(author =>
+         author.id !== action.authorId)
+       ];
     case types.LOAD_AUTHORS_SUCCESS:
       return action.authors;
     default:
