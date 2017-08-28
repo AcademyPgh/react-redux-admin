@@ -14,6 +14,10 @@ export function loadCoursesSuccess(courses) {
     return { type: types.LOAD_COURSES_SUCCESS, courses };
 }
 
+export function deleteCourseSuccess(course) {
+    return { type: types.DELETE_COURSE_SUCCESS, course };
+}
+
 //Thunks:
 // a Thunk always returns a funciton that accepts a dispatch:
 export function loadCourses() {
@@ -34,6 +38,17 @@ export function saveCourse(course){
       course.id ? dispatch(updateCourseSuccess(savedCourse)) :
       dispatch(createCourseSuccess(savedCourse));
     }).catch(error => {
+      dispatch(ajaxCallError(error));
+      throw(error);
+    });
+  };
+}
+
+export function deleteCourse(course){
+  return function(dispatch) {
+    dispatch(beginAjaxCall());
+    console.log(course)
+    return courseApi.deleteCourse(course.id).then(dispatch(deleteCourseSuccess(course))).catch(error => {
       dispatch(ajaxCallError(error));
       throw(error);
     });

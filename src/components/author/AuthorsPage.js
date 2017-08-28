@@ -24,13 +24,13 @@ class AuthorsPage extends React.Component {
   }
 
   deleteAuthor(id, event) {
+    let author = this.props.authors.filter(author => author.id === id)[0];
     event.preventDefault();
-    // console.log(event)
-    // console.log(id)
+
     this.props.actions.deleteAuthor(id).catch(error => {
       toastr.error(error);
     });
-    toastr.warning(`${id} deleted`);
+    toastr.warning(`${author.firstName} ${author.lastName} deleted`);
   }
 
   render() {
@@ -71,6 +71,9 @@ function mapDispatchtoProps(dispatch) {
   return ({
     actions: bindActionCreators(authorActions, dispatch)
   });
+  //each property on the object you define will
+  //become a property on container Component
+  //accessible by "this.props.actions"
 }
 
 export default connect(mapStateToProps, mapDispatchtoProps)(AuthorsPage);

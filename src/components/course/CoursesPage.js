@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux';
 import * as courseActions from '../../actions/courseActions';
 import CourseList from './CourseList';
 import {browserHistory} from 'react-router';
+import toastr from 'toastr';
 
 class CoursesPage extends React.Component {
   constructor(props, context) {
@@ -16,6 +17,7 @@ class CoursesPage extends React.Component {
 
     this.onTitleChange = this.onTitleChange.bind(this);
     this.onClickSave = this.onClickSave.bind(this);
+    this.deleteCourse = this.deleteCourse.bind(this);
   }
 
   onTitleChange(event) {
@@ -29,6 +31,15 @@ class CoursesPage extends React.Component {
   onClickSave() {
     // this.props.createCourse(this.state.course);
     this.props.actions.createCourse(this.state.course);
+
+  }
+
+  deleteCourse(course, event) {
+    event.preventDefault();
+    this.props.actions.deleteCourse(course).catch(error => {
+      throw(error);
+    });
+    toastr.warning(`${course.title} deleted`);
 
   }
 
@@ -47,7 +58,10 @@ class CoursesPage extends React.Component {
           value="Add Course"
           onClick={this.redirectToAddCoursePage}
         />
-        <CourseList courses={courses} />
+        <CourseList
+          courses={courses}
+          deleteCourse={this.deleteCourse}
+         />
       </div>
     );
   }
