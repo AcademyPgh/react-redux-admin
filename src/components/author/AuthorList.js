@@ -7,6 +7,7 @@ class AuthorList extends React.Component {
         <table className="table">
           <thead>
           <tr>
+            <th>&nbsp;</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>ID</th>
@@ -15,7 +16,11 @@ class AuthorList extends React.Component {
           </thead>
           <tbody>
             {this.props.authors.map(author =>
-              <AuthorListRow key={author.id} author={author} deleteAuthor={this.props.deleteAuthor}/>
+              <AuthorListRow
+                key={author.id}
+                author={author}
+                deleteAuthor={this.props.deleteAuthor}
+              />
 
           )}
           </tbody>

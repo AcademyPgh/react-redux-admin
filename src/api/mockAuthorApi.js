@@ -78,4 +78,4 @@ class AuthorApi {
   }
 }
 
-export default AuthorApi; 
+export default AuthorApi;

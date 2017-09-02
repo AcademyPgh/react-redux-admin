@@ -1,12 +1,14 @@
 import React, {PropTypes} from 'react';
 import {Link} from 'react-router';
 
-const CourseListRow = ({course, deleteCourse}) => {
+const CourseListRow = ({course, deleteCourse, authors}) => {
   return (
     <tr>
       <td><a href={course.watchHref} target="_blank">Watch</a></td>
       <td><Link to={'/course/' + course.id}>{course.title}</Link></td>
-      <td>{course.authorId}</td>
+      {/* <td>{author.length ? `${author.firstName} ${author.lastName}` : 'Loading'}</td> */}
+
+      <td>{idConverter(course.authorId)}</td>
       <td>{course.category}</td>
       <td>{course.length}</td>
       <td><a href="#" onClick={deleteCourse.bind(this, course)}>Delete</a></td>
@@ -15,7 +17,14 @@ const CourseListRow = ({course, deleteCourse}) => {
 };
 
 CourseListRow.propTypes = {
-  course: PropTypes.object.isRequired
+  course: PropTypes.object.isRequired,
+  author: PropTypes.array,
+  deleteCourse: PropTypes.func.isRequired
 };
+
+function idConverter(id) {
+  return id.split('-').map(name => name[0].toUpperCase() + name.slice(1)).join(" ");
+}
+
 
 export default CourseListRow;
