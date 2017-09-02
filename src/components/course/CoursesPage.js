@@ -58,10 +58,16 @@ class CoursesPage extends React.Component {
           value="Add Course"
           onClick={this.redirectToAddCoursePage}
         />
-        <CourseList
-          courses={courses}
-          deleteCourse={this.deleteCourse}
-         />
+        {
+          courses.length ?
+          <CourseList
+            courses={courses}
+            deleteCourse={this.deleteCourse}
+           />
+           :
+           <p className="jumbotron">No courses to display</p>
+        }
+
       </div>
     );
   }

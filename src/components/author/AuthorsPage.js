@@ -29,7 +29,6 @@ class AuthorsPage extends React.Component {
     event.preventDefault();
 
     const courses = hasCourse(author, this.props.courses);
-    console.log(courses)
 
     if (courses.length) {
       toastr.error(`Cannot delete ${author.firstName} ${author.lastName} until all corresponding courses are deleted: ${courses.map(course => course.title).join(", ")}.`);
@@ -44,7 +43,6 @@ class AuthorsPage extends React.Component {
 
 
   render() {
-    console.log(this.props.courses)
     const {authors} = this.props;
 
     return (
