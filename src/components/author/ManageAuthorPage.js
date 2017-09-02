@@ -55,7 +55,6 @@ class ManageAuthorPage extends React.Component {
   }
 
   render () {
-    console.log(this.state.author)
     return (
       <div>
         <AuthorForm

@@ -50,7 +50,6 @@ class AuthorApi {
         }
 
         if (author.id) {
-          console.log(author.id)
           const existingAuthorIndex = authors.findIndex(a => a.id == author.id);
           authors.splice(existingAuthorIndex, 1, author);
         } else {

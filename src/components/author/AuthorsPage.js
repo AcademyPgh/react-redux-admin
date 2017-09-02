@@ -23,19 +23,29 @@ class AuthorsPage extends React.Component {
     browserHistory.push('/author');
   }
 
+
   deleteAuthor(id, event) {
     let author = this.props.authors.filter(author => author.id === id)[0];
     event.preventDefault();
 
-    this.props.actions.deleteAuthor(id).catch(error => {
-      toastr.error(error);
-    });
-    toastr.warning(`${author.firstName} ${author.lastName} deleted`);
+    const courses = hasCourse(author, this.props.courses);
+    console.log(courses)
+
+    if (courses.length) {
+      toastr.error(`Cannot delete ${author.firstName} ${author.lastName} until all corresponding courses are deleted: ${courses.map(course => course.title).join(", ")}.`);
+    } else {
+      this.props.actions.deleteAuthor(id).catch(error => {
+        toastr.error(error);
+      });
+      toastr.warning(`${author.firstName} ${author.lastName} deleted`);
+    }
   }
 
+
+
   render() {
+    console.log(this.props.courses)
     const {authors} = this.props;
-    console.log(authors)
 
     return (
       <div>
@@ -56,12 +66,18 @@ class AuthorsPage extends React.Component {
 
 AuthorsPage.propTypes = {
   authors: PropTypes.array.isRequired,
+  courses: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 };
 
+function hasCourse(author, courseList) {
+  return courseList.filter(course => course.authorId === author.id);
+}
+
 function mapStateToProps(state, ownProps) {
   return ({
-    authors: state.authors
+    authors: state.authors,
+    courses: state.courses
   });
   //each property on the object you define will
   //become a property on container Component
