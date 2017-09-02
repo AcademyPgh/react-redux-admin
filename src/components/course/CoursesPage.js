@@ -61,26 +61,32 @@ class CoursesPage extends React.Component {
         {
           courses.length ?
           <CourseList
+            authors={this.props.authors}
             courses={courses}
             deleteCourse={this.deleteCourse}
            />
            :
-           <p className="jumbotron">No courses to display</p>
+           <h1 className="jumbotron">No courses to display</h1>
         }
-
       </div>
     );
   }
 }
 
 CoursesPage.propTypes = {
+  authors: PropTypes.array.isRequired,
   courses: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
+  let courses = state.courses.sort((courseA, courseB) => courseA.title > courseB.title );
+
   return (
-    {courses: state.courses}
+    {
+      authors: state.authors,
+      courses: courses
+    }
   );
 }
 
