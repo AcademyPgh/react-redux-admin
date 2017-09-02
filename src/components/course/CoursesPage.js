@@ -28,12 +28,6 @@ class CoursesPage extends React.Component {
     });
   }
 
-  // onClickSave() {
-  //   // this.props.createCourse(this.state.course);
-  //   this.props.actions.createCourse(this.state.course);
-
-  // }
-
   deleteCourse(course, event) {
     event.preventDefault();
     this.props.actions.deleteCourse(course).catch(error => {
@@ -93,8 +87,6 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchtoProps(dispatch) {
   return ({
     actions: bindActionCreators(courseActions, dispatch)
-    //manual mapping
-    // createCourse: course => dispatch(courseActions.createCourse(course))
   });
 }
 

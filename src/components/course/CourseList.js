@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import CourseListRow from './CourseListRow';
 
-const CourseList = ({courses, deleteCourse}) => {
+const CourseList = ({courses, authors, deleteCourse}) => {
  return (
    <table className="table">
      <thead>
@@ -19,6 +19,8 @@ const CourseList = ({courses, deleteCourse}) => {
        <CourseListRow
          key={course.id}
          course={course}
+        //  author={new Promise((resolve, reject) => resolve(getAuthorById(authors, course.authorId)))}
+        authors={authors}
          deleteCourse={deleteCourse}
        />
      )}
@@ -29,6 +31,7 @@ const CourseList = ({courses, deleteCourse}) => {
 
 CourseList.propTypes = {
  courses: PropTypes.array.isRequired,
+ authors: PropTypes.array.isRequired,
  deleteCourse: PropTypes.func.isRequired
 };
 
