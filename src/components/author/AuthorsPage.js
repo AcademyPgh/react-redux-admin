@@ -35,6 +35,7 @@ class AuthorsPage extends React.Component {
 
   render() {
     const {authors} = this.props;
+    console.log(authors)
 
     return (
       <div>
@@ -42,7 +43,6 @@ class AuthorsPage extends React.Component {
         <input
           type="submit"
           value="Add Author"
-          deleteAuthor={this.deleteAuthor}
           onClick={this.redirectToAddAuthorPage}
         />
         <AuthorList

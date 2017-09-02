@@ -16,7 +16,7 @@ class CoursesPage extends React.Component {
     };
 
     this.onTitleChange = this.onTitleChange.bind(this);
-    this.onClickSave = this.onClickSave.bind(this);
+    // this.onClickSave = this.onClickSave.bind(this);
     this.deleteCourse = this.deleteCourse.bind(this);
   }
 
@@ -28,11 +28,11 @@ class CoursesPage extends React.Component {
     });
   }
 
-  onClickSave() {
-    // this.props.createCourse(this.state.course);
-    this.props.actions.createCourse(this.state.course);
+  // onClickSave() {
+  //   // this.props.createCourse(this.state.course);
+  //   this.props.actions.createCourse(this.state.course);
 
-  }
+  // }
 
   deleteCourse(course, event) {
     event.preventDefault();

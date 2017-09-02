@@ -1,25 +1,28 @@
 import React, {PropTypes} from 'react';
 import TextInput from '../common/TextInput';
 
-const AuthorForm = ({author}) => {
+const AuthorForm = ({author, onSave, onChange, saving, errors}) => {
   return (
     <form>
+      <h1>Manage Author</h1>
       <TextInput
         name="firstName"
         label="First Name"
         value={author.firstName}
-        // onChange={}
-        // error = {}
+        onChange={onChange}
+        error = {errors.firstName}
       />
         <TextInput
           name="lastName"
           label="Last Name"
           value={author.lastName}
-          // onChange={}
-          // error = {}
+          onChange={onChange}
+          error = {errors.lastName}
         />
       <input
         type="submit"
+        onClick={onSave}
+        className="btn btn-primary"
         value="Save Author" />
 
     </form>
@@ -27,11 +30,11 @@ const AuthorForm = ({author}) => {
 };
 
 AuthorForm.propTypes = {
-  author: PropTypes.object.isRequired
-  // onSave: PropTypes.func.isRequired,
-  // onChange: PropTypes.func.isRequired,
-  // saving: PropTypes.bool,
-  // errors: PropTypes.object
+  author: PropTypes.object.isRequired,
+  onSave: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  saving: PropTypes.bool,
+  errors: PropTypes.object
 };
 
 export default AuthorForm;

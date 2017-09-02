@@ -11,9 +11,10 @@ import AboutPage from './components/about/AboutPage';
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={HomePage}/>
-    <Route path="courses" component={CoursesPage}/>
     <Route path="authors" component={AuthorsPage} />
     <Route path="author" component={ManageAuthorPage} />
+    <Route path="author/:id" component={ManageAuthorPage} />
+    <Route path="courses" component={CoursesPage}/>
     <Route path="course/:id" component={ManageCoursePage}/>
     <Route path="course" component={ManageCoursePage}/>
     <Route path="about" component={AboutPage}/>
