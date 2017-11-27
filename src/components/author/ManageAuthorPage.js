@@ -27,11 +27,32 @@ class ManageAuthorPage extends React.Component {
     return this.setState({author: author});
   }
 
+  authorFormIsValid() {
+    let formIsValid = true;
+    let errors = {};
+
+    if(this.state.author.firstName.length < 3) {
+      errors.firstName = 'First Name must be at least 3 characters';
+      formIsValid = false;
+    }
+
+    if(this.state.author.lastName.length < 3) {
+      errors.lastName = 'Last Name must be at least 3 characters';
+      formIsValid = false;
+    }
+
+    this.setState({errors: Object.assign({}, this.state, errors)});
+    return formIsValid;
+  }
+
   saveAuthor(event) {
     event.preventDefault();
-    //TODO validate author
-    this.setState({saving: true});
 
+    if(!this.authorFormIsValid()) {
+      return;
+    }
+
+    this.setState({saving: true});
     this.props.actions.saveAuthor(this.state.author)
     .then(() => this.redirect())
     .catch(error => {

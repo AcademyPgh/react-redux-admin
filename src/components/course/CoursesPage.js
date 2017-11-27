@@ -16,7 +16,6 @@ class CoursesPage extends React.Component {
     };
 
     this.onTitleChange = this.onTitleChange.bind(this);
-    // this.onClickSave = this.onClickSave.bind(this);
     this.deleteCourse = this.deleteCourse.bind(this);
   }
 
