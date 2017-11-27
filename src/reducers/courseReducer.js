@@ -10,12 +10,12 @@ export default function courseReducer(state = [], action) {
       case types.CREATE_COURSE_SUCCESS:
         return [...state,
           Object.assign({}, action.course)
-        ];
+        ].sort((courseA, courseB) => courseA.title > courseB.title );
         case types.UPDATE_COURSE_SUCCESS:
           return [...state.filter(course =>
             course.id !== action.course.id),
             Object.assign({}, action.course)
-          ];
+          ].sort((courseA, courseB) => courseA.title > courseB.title );
         case types.DELETE_COURSE_SUCCESS:
           return [...state.filter(course =>
             course.id !== action.course.id)

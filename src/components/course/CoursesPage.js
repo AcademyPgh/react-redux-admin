@@ -74,12 +74,11 @@ CoursesPage.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
-  let courses = state.courses.sort((courseA, courseB) => courseA.title > courseB.title );
 
   return (
     {
       authors: state.authors,
-      courses: courses
+      courses: state.courses
     }
   );
 }
