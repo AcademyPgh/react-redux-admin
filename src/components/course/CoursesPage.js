@@ -27,7 +27,7 @@ class CoursesPage extends React.Component {
     });
   }
 
-  deleteCourse(course, event) {
+  deleteCourse(course) {
     event.preventDefault();
     this.props.actions.deleteCourse(course).catch(error => {
       throw(error);

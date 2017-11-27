@@ -1,20 +1,30 @@
 import React, {PropTypes} from 'react';
 import {Link} from 'react-router';
 
-const CourseListRow = ({course, deleteCourse, authors}) => {
-  return (
-    <tr>
-      <td><a href={course.watchHref} target="_blank">Watch</a></td>
-      <td><Link to={'/course/' + course.id}>{course.title}</Link></td>
-      {/* <td>{author.length ? `${author.firstName} ${author.lastName}` : 'Loading'}</td> */}
+class CourseListRow extends React.Component {
+  constructor() {
+    super();
+    this._onClick = this._onClick.bind(this);
+  }
 
-      <td>{idConverter(course.authorId)}</td>
-      <td>{course.category}</td>
-      <td>{course.length}</td>
-      <td><a href="#" onClick={deleteCourse.bind(this, course)}>Delete</a></td>
-    </tr>
-  );
-};
+  _onClick() {
+    this.props.deleteCourse(this.props.course);
+  }
+
+  render() {
+    const { course } = this.props;
+    return (
+      <tr>
+        <td><a href={course.watchHref} target="_blank">Watch</a></td>
+        <td><Link to={'/course/' + course.id}>{course.title}</Link></td>
+        <td>{idConverter(course.authorId)}</td>
+        <td>{course.category}</td>
+        <td>{course.length}</td>
+        <td><a href="#" onClick={this._onClick}>Delete</a></td>
+      </tr>
+    );
+  }
+}
 
 CourseListRow.propTypes = {
   course: PropTypes.object.isRequired,

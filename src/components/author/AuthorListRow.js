@@ -13,13 +13,14 @@ class AuthorListRow extends React.Component {
   }
 
   render() {
+    const {author} = this.props;
     return (
 
       <tr>
-        <td><Link to={'/author/'+this.props.author.id}>Edit</Link></td>
-        <td>{this.props.author.firstName}</td>
-        <td>{this.props.author.lastName}</td>
-        <td>{this.props.author.id}</td>
+        <td><Link to={'/author/'+author.id}>Edit</Link></td>
+        <td>{author.firstName}</td>
+        <td>{author.lastName}</td>
+        <td>{author.id}</td>
         <td><a href="#" onClick={this._onClick}>Delete</a></td>
       </tr>
     );
