@@ -27,6 +27,43 @@ export class ManageCoursePage extends React.Component {
     return this.setState({course: course});
   }
 
+  filterInt(value) {
+    if (value <= 60 || value >= 0)
+      return false;
+    return true;
+  }
+
+  lengthIsValid(time, errors) {
+
+
+
+
+    let timeDivisions = time.split(':');
+    let check, c = 0;
+    console.log(timeDivisions);
+    for (check in timeDivisions) {
+      console.log('timeDivisions[check]'+timeDivisions[check]);
+
+      if (this.filterInt(timeDivisions[check])) {
+        errors.length = 'Length must be in time format.';
+        return false;
+      }
+      //
+      //
+      // let charr = timeDivisions[check].split('');
+      // console.log(charr)
+      // for (c in charr) {
+      //   console.log('char[c]'+charr[c]);
+      //   console.log(typeof(filterInt(charr[c])));
+      //   if (typeof(filterInt(charr[c])) != 'number' ) {
+      //     errors.length = 'Length must be in time format.';
+      //     return false;
+      //   }
+      // }
+    }
+    return true;
+  }
+
   courseFormIsValid() {
     let formIsValid = true;
     let errors = {};
@@ -35,6 +72,24 @@ export class ManageCoursePage extends React.Component {
       errors.title = 'Title must be at least 5 characters.';
       formIsValid = false;
     }
+
+    if (!this.state.course.authorId) {
+      errors.authorId = 'You must select an author.';
+      formIsValid = false;
+    }
+
+    if (!this.state.course.category) {
+      errors.category = 'You must choose a category.';
+      formIsValid = false;
+    }
+
+    if (!this.state.course.category) {
+      errors.category = 'You must choose a category.';
+      formIsValid = false;
+    }
+
+    formIsValid = this.lengthIsValid(this.state.course.length, errors);
+
 
     this.setState({errors: errors});
     return formIsValid;
@@ -67,7 +122,7 @@ export class ManageCoursePage extends React.Component {
     return (
       <div>
         <CourseForm
-          allAuthors = {this.props.authors}
+          allAuthors={this.props.authors}
           course={this.state.course}
           onChange={this.updateCourseState}
           onSave={this.saveCourse}
