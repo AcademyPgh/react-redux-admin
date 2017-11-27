@@ -24,14 +24,14 @@ class AuthorsPage extends React.Component {
   }
 
 
-  deleteAuthor(id, event) {
+  deleteAuthor(id) {
     let author = this.props.authors.filter(author => author.id === id)[0];
-    event.preventDefault();
 
     const courses = hasCourse(author, this.props.courses);
 
     if (courses.length) {
-      toastr.error(`Cannot delete ${author.firstName} ${author.lastName} until all corresponding courses are deleted: ${courses.map(course => course.title).join(", ")}.`);
+      toastr.error(`Cannot delete ${author.firstName} ${author.lastName} until all corresponding courses are deleted:
+        ${courses.map(course => course.title).join(", ")}.`);
     } else {
       this.props.actions.deleteAuthor(id).catch(error => {
         toastr.error(error);
