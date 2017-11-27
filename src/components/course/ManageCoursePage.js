@@ -34,32 +34,14 @@ export class ManageCoursePage extends React.Component {
   }
 
   lengthIsValid(time, errors) {
-
-
-
-
     let timeDivisions = time.split(':');
     let check, c = 0;
-    console.log(timeDivisions);
     for (check in timeDivisions) {
-      console.log('timeDivisions[check]'+timeDivisions[check]);
 
       if (this.filterInt(timeDivisions[check])) {
         errors.length = 'Length must be in time format.';
         return false;
       }
-      //
-      //
-      // let charr = timeDivisions[check].split('');
-      // console.log(charr)
-      // for (c in charr) {
-      //   console.log('char[c]'+charr[c]);
-      //   console.log(typeof(filterInt(charr[c])));
-      //   if (typeof(filterInt(charr[c])) != 'number' ) {
-      //     errors.length = 'Length must be in time format.';
-      //     return false;
-      //   }
-      // }
     }
     return true;
   }
