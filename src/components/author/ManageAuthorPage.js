@@ -19,14 +19,6 @@ class ManageAuthorPage extends React.Component {
     this.updateAuthorState = this.updateAuthorState.bind(this);
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   console.log("nextProps")
-  //   console.log(nextProps.author)
-  //   if(this.props.author.id !== nextProps.author.id) {
-  //     this.setState({author: Object.assign({}, nextProps.author)});
-  //   }
-  // }
-
   updateAuthorState(event) {
     const field = event.target.name;
     let author = Object.assign({}, this.state.author);

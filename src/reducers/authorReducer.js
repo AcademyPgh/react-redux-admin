@@ -10,12 +10,12 @@ export default function authorReducer(state = [], action) {
     case types.CREATE_AUTHOR_SUCCESS:
       return [...state,
         Object.assign({}, action.author)
-       ];
+       ].sort((authorA, authorB) => authorA.lastName > authorB.lastName );
      case types.UPDATE_AUTHOR_SUCCESS:
        return [...state.filter(author =>
           author.id !== action.author.id),
            Object.assign({}, action.author)
-        ];
+        ].sort((authorA, authorB) => authorA.lastName > authorB.lastName );
       case types.DELETE_AUTHOR_SUCCESS:
         return [...state.filter(author =>
            author.id !== action.authorId)

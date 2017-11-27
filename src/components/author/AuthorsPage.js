@@ -79,7 +79,6 @@ function hasCourse(author, courseList) {
 }
 
 function mapStateToProps(state, ownProps) {
-  let authors = state.authors.sort((authorA, authorB) => authorA.lastName > authorB.lastName );
 
   return ({
     authors: state.authors,
