@@ -12,13 +12,13 @@ import My404Component from './components/common/My404Component.js';
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={HomePage}/>
+    <Route path="about" component={AboutPage}/>
     <Route path="authors" component={AuthorsPage} />
     <Route path="author" component={ManageAuthorPage} />
     <Route path="author/:id" component={ManageAuthorPage} />
     <Route path="courses" component={CoursesPage}/>
     <Route path="course/:id" component={ManageCoursePage}/>
     <Route path="course" component={ManageCoursePage}/>
-    <Route path="about" component={AboutPage}/>
-    <Route path="*" exact={true} component={My404Component} />
+    <Route path="*" component={My404Component} />
   </Route>
 );

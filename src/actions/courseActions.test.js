@@ -36,7 +36,7 @@ describe('Async Actions', () => {
   });
 
   describe('Course Actions Thunk', () => {
-    it('should create BEGIN_AJAX_CALL and LOAD_COURSES_SUCCESS when loading courses', (done) => {
+    it('should create BEGIN_AJAX_CALL and LOAD_COURSES_SUCCESS when loading courses. \n \t \t(This test will be delayed by the set "delay" in the mock API calls):', (done) => {
       // In a real app, you'd likely make a real HTTP call.
       // To mock out that http call, you can use Nock to intercept all
       // calls to a given address or pattern. This means you can test

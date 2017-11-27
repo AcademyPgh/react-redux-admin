@@ -34,12 +34,16 @@ export class ManageCoursePage extends React.Component {
   }
 
   lengthIsValid(time, errors) {
+    if(!time.length) {
+      errors.length = 'You must enter a length in time format.';
+      return false;
+    }
     let timeDivisions = time.split(':');
     let check, c = 0;
     for (check in timeDivisions) {
       if (this.filterInt(timeDivisions[check])) {
         // We don't actually set the state of the erros until this function is called within
-        // the courseFormIsValid function. 
+        // the courseFormIsValid function.
         errors.length = 'Length must be in time format.';
         return false;
       }
@@ -71,7 +75,9 @@ export class ManageCoursePage extends React.Component {
       formIsValid = false;
     }
 
-    formIsValid = this.lengthIsValid(this.state.course.length, errors);
+    if(!this.lengthIsValid(this.state.course.length, errors)) {
+      formIsValid = false;
+    }
 
 
     this.setState({errors: errors});
@@ -80,7 +86,6 @@ export class ManageCoursePage extends React.Component {
 
   saveCourse(event) {
     event.preventDefault();
-
     if (!this.courseFormIsValid()) {
       return;
     }
@@ -138,7 +143,7 @@ function getCourseById(courses, id) {
 function mapStateToProps(state, ownProps) {
   const courseId = ownProps.params.id; // from the path `/course/:id`
 
-  let course = {id: '', watchHref: '', title: '', authorId: '', length: '', category: ''};
+  let course = {id: '', watchHref: '', title: '', authorId: '', length: '0:00', category: ''};
 
   if (courseId && state.courses.length > 0) {
     course = getCourseById(state.courses, courseId);

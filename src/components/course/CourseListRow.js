@@ -11,13 +11,19 @@ class CourseListRow extends React.Component {
     this.props.deleteCourse(this.props.course);
   }
 
+  _idConverter(id) {
+    if(id) {
+      return id.split('-').map(name => name[0].toUpperCase() + name.slice(1)).join(" ");
+    }
+  }
+
   render() {
     const { course } = this.props;
     return (
       <tr>
         <td><a href={course.watchHref} target="_blank">Watch</a></td>
         <td><Link to={'/course/' + course.id}>{course.title}</Link></td>
-        <td>{idConverter(course.authorId)}</td>
+        <td>{this._idConverter(course.authorId)}</td>
         <td>{course.category}</td>
         <td>{course.length}</td>
         <td><a href="#" onClick={this._onClick}>Delete</a></td>
@@ -31,10 +37,6 @@ CourseListRow.propTypes = {
   author: PropTypes.array,
   deleteCourse: PropTypes.func.isRequired
 };
-
-function idConverter(id) {
-  return id.split('-').map(name => name[0].toUpperCase() + name.slice(1)).join(" ");
-}
 
 
 export default CourseListRow;

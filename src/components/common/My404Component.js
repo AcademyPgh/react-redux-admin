@@ -1,7 +1,12 @@
 import React from 'react';
 
-export default () => {
+ const My404Component = () => {
   return (
-    <h1 className="jumbotron">404 Not Found</h1>
+    <div className="jumbotron" >
+      <h1 >404 Not Found</h1>
+      <p>We are sorry but the page you are looking for does not exist.</p>
+    </div>
   );
 };
+
+export default My404Component;
